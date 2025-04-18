@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inventario</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container-fluid justify-content-between px-3">
+      <span class="navbar-brand">Gestión de Inventario</span>
+      <div class="controls-wrapper">
+        <label class="theme-switch m-0">
+          <input type="checkbox" id="toggle-theme" />
+          <span class="slider"></span>
+        </label>
+        <button class="btn btn-outline-danger btn-sm" onclick="logout()">Cerrar sesión</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container my-4">
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h5 class="card-title text-center text-md-start">Agregar nuevo producto</h5>
+        <form id="formProducto" class="row g-3">
+          <div class="col-12 col-md-6">
+            <label class="form-label">Nombre del producto</label>
+            <input type="text" class="form-control" id="nombre" required />
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="form-label">Precio</label>
+            <input type="number" class="form-control" id="precio" required />
+          </div>
+          <div class="col-12">
+            <label class="form-label">Descripción</label>
+            <textarea class="form-control" id="descripcion" rows="3"></textarea>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="disponible" checked />
+              <label class="form-check-label" for="disponible">Disponible</label>
+            </div>
+          </div>
+          <div class="col-12 text-end">
+            <button type="submit" class="btn btn-primary w-100 w-md-auto">Guardar producto</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title text-center text-md-start">Lista de productos</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered text-center align-middle">
+            <thead class="table-light">
+              <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Disponible</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaProductos">
+              <!-- productos cargados por JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/inventario.js"></script>
+  <script>
+    function logout() {
+      localStorage.removeItem('token');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+
+</html>
